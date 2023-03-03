@@ -41,6 +41,10 @@
 		}
 		.container:hover p {
 			background-color: #f2f2f2;
+			transform: scale(1.02);
+		}
+		.container:active p {
+			transform: scale(.9);
 		}
 		.question {
 			background-color: #4d4d4d;
@@ -120,6 +124,19 @@
 			"How are emerging technologies changing design for audiences? For designers?",
 			"How are emerging technologies changing education? What do we still need to teach or learn?",
 			"How much good can theory do for me, or us?",
+			"How can I pass on my education, experience, and resources to other individuals, designers or otherwise?",
+			"Where can I find digital communities today?",
+			"What sorts of interactive media feel natural or comfortable to today’s audiences? How is that changing?",
+			"Where is theory being generated? How are the sources for theory changing?",
+			"With my identity, where can I best serve my community and other communities?",
+			"How can websites tell stories?",
+			"What is it about fonts that I love? Do we need more fonts?",
+			"Is there a distinction between design and nature?",
+			"What am I overly reliant on when I design?",
+			"What sorts of things still surprise people about digital interfaces?",
+			"How do music and sound generate meaning?",
+			"How do you spread joy?",
+			"How can design enter into a community?"
 		]
 		shuffle(questions);
 		let questionText = document.querySelector(".question span");
