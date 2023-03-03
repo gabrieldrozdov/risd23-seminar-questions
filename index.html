@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>?</title>
+	<style>
+		@font-face {
+			font-family: Jost;
+			src: url("assets/jost.ttf");
+		}
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: url("assets/background-red.gif");
+			background-position: center;
+			padding: 20px;
+			cursor: pointer;
+			transition: background-size 1s, background-image .2s;
+			color: #f2f2f2;
+			fill: #f2f2f2;
+		}
+		.container:hover {
+			color: #4d4d4d;
+			fill: #4d4d4d;
+		}
+		.container:hover p {
+			background-color: #f2f2f2;
+		}
+		.question {
+			background-color: #4d4d4d;
+			border-radius: 15px;
+			padding: 40px;
+			font-weight: 300;
+			max-width: 700px;
+			font-family: Jost, sans-serif;
+			font-size: 36px;
+			text-align: center;
+			line-height: 1.2em;
+			-webkit-user-select: none; /* Safari */
+			-ms-user-select: none; /* IE 10 and IE 11 */
+			user-select: none; /* Standard syntax */
+			box-shadow: 0 0 10px rgba(0,0,0,.3);
+			position: relative;
+			transition: .2s;
+		}
+		.question svg {
+			position: absolute;
+			width: 10px;
+		}
+		.corner-circle-1 {
+			top: 10px;
+			left: 10px;
+		}
+		.corner-circle-2 {
+			top: 10px;
+			right: 10px;
+		}
+		.corner-circle-3 {
+			bottom: 10px;
+			right: 10px;
+		}
+		.corner-circle-4 {
+			bottom: 10px;
+			left: 10px;
+		}
+		@media screen and (max-width: 600px) {
+			.question {
+				writing-mode: vertical-rl;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="container" onclick="newQuestion()">
+		<p class="question">
+			<svg class="corner-circle-1" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg><svg class="corner-circle-2" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg><svg class="corner-circle-3" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg><svg class="corner-circle-4" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10"/></svg>
+			<span>Why do I think I'm not an artist?</span>
+		</p>
+	</main>
+
+	<script>
+		let container = document.querySelector(".container");
+		let backgrounds = ["blue", "green", "pink", "purple", "red", "yellow"]
+		shuffle(backgrounds);
+		let backgroundIndex = Math.floor(Math.random()*backgrounds.length);
+		container.style.backgroundImage = `url("assets/background-${backgrounds[backgroundIndex]}.gif")`;
+		container.style.backgroundSize = `${Math.random()*50+50}px ${Math.random()*50+50}px`;
+
+		let questions = [
+			"Why do I think I'm not an artist?",
+			"What is the language of play?",
+			"What values are outcomes are still valuable and feasible in our volatile world?",
+			"What does it mean to be a designer and not an artist?",
+			"What do different communities, cultures, and publics understand about design, and how do these groups digest or react to design?",
+			"How can digital landscapes bring people together?",
+			"If playfulness can help people learn, then why and how?",
+			"Who is design not currently for, why is that so, and where are those communities or people?",
+			"When is design ineffective, inappropriate, or unwanted?",
+			"How are emerging technologies changing design for audiences? For designers?",
+			"How are emerging technologies changing education? What do we still need to teach or learn?",
+			"How much good can theory do for me, or us?",
+		]
+		shuffle(questions);
+		let questionText = document.querySelector(".question span");
+		let questionIndex = 0;
+		question.style.display = "block";
+
+		function newQuestion() {
+			questionIndex++;
+			questionText.innerText = questions[questionIndex];
+			if (questionIndex >= questions.length-1) {
+				questionIndex = 0;
+			}
+
+			backgroundIndex++;
+			container.style.backgroundImage = `url("assets/background-${backgrounds[backgroundIndex]}.gif")`;
+			container.style.backgroundSize = `${Math.random()*50+50}px ${Math.random()*50+50}px`;
+			if (backgroundIndex >= backgrounds.length-1) {
+				backgroundIndex = 0;
+			}
+		}
+
+		function shuffle(array) {
+			let currentIndex = array.length,  randomIndex;
+
+			// While there remain elements to shuffle.
+			while (currentIndex != 0) {
+
+				// Pick a remaining element.
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex--;
+
+				// And swap it with the current element.
+				[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]];
+			}
+
+			return array;
+		}
+	</script>
+</body>
+</html>
